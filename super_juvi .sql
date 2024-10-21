@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2024 a las 05:20:12
+-- Tiempo de generación: 21-10-2024 a las 03:15:10
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `super juvi`
+-- Base de datos: `super_juvi`
 --
+CREATE DATABASE IF NOT EXISTS `super_juvi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `super_juvi`;
 
 -- --------------------------------------------------------
 
@@ -31,10 +33,6 @@ CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- RELACIONES PARA LA TABLA `categorias`:
---
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -56,10 +54,6 @@ CREATE TABLE `medidas` (
   `id` int(11) NOT NULL,
   `unidad_medida` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- RELACIONES PARA LA TABLA `medidas`:
---
 
 --
 -- Volcado de datos para la tabla `medidas`
@@ -86,16 +80,6 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- RELACIONES PARA LA TABLA `productos`:
---   `id_categoria`
---       `categorias` -> `id`
---   `id_proveedor`
---       `proveedores` -> `id`
---   `id_unidad_medida`
---       `medidas` -> `id`
---
-
---
 -- Volcado de datos para la tabla `productos`
 --
 
@@ -119,10 +103,6 @@ CREATE TABLE `proveedores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- RELACIONES PARA LA TABLA `proveedores`:
---
-
---
 -- Volcado de datos para la tabla `proveedores`
 --
 
@@ -131,6 +111,26 @@ INSERT INTO `proveedores` (`id`, `nombre`, `cuil_cuit`, `ciudad`, `telefono`) VA
 (2, 'TPG', '20-41103096-3', 'Mar del plata', 2234872345),
 (3, 'El rencuentro', '21-6958754-9', 'Tandil', 2494029921),
 (4, 'Porc', '24-9865875-98', 'Tandil', 2494242328);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `contraseña` varchar(255) NOT NULL,
+  `mail` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `contraseña`, `mail`) VALUES
+(1, 'webadmin', 'admin', 'web2@tudai.com');
 
 --
 -- Índices para tablas volcadas
@@ -166,6 +166,13 @@ ALTER TABLE `proveedores`
   ADD UNIQUE KEY `cuil_cuit` (`cuil_cuit`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `mail` (`mail`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -192,6 +199,12 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `proveedores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

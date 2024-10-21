@@ -4,7 +4,7 @@
         private $db;
 
         function __construct(){
-            $this->db = new PDO('mysql:host=localhost;'.'dbname=super juvi;charset=utf8', 'root', '');
+            $this->db = new PDO('mysql:host=localhost;'.'dbname=super_juvi;charset=utf8', 'root', '');
         }
 
         

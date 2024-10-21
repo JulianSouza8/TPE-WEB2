@@ -1,0 +1,31 @@
+<?=require 'header.phtml'?>
+    
+<table class="font-size-tabla  ml-2 mt-4 tabla">
+        <th class="th-tipo text-center th-prop th-prop-largo"> ID </th>
+        <th class="th-nombre text-center th-prop th-prop-largo ">NOMBRE</th>
+        <th class="th-valor text-center th-prop th-acciones "> CATEGORIA </th>
+        <th class="th-valor text-center th-prop th-acciones "> UNIDAD DE MEDIDA </th>
+        <th class="th-valor text-center th-prop th-acciones "> PROVEEDOR </th>
+        <th class="th-valor text-center th-prop th-acciones th-borde-right "> </th>
+
+        <?php foreach($proveedor as $prv) { ?> 
+            <form action="./updateProveedor/<?=$prv->id?>" method="POST">
+                
+                <td class="td-prop text-center"> <?=$prv->id?> </td>
+                <td> <input require name="nombreproveedor" value="<?=$prv->nombre?>"> </td>
+                <td> <input require name="cuil_cuit" value="<?=$prv->cuil_cuit?>">  </td>
+                <td> <input require name="ciudad" value="<?=$prv->ciudad?>"> </td>
+                <td> <input require name="telefono" value="<?=$prv->telefono?>"> </td>
+                <div class="acciones">
+                <button type="submit"class=""> GUARDAR</button>
+                </div>
+
+            </form>
+        <?php } ?>
+    </table>
+
+
+
+
+
+<?=require 'footer.phtml'?>

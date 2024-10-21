@@ -1,0 +1,40 @@
+<?=require 'header.phtml'?>
+
+<div class="container">
+
+<h2 class="display-4 text-capitalize grey-color container mt-4 mb-4"> Altas </h2> 
+
+
+    <table class="font-size-tabla  ml-2 mt-4 tabla">
+        <th class="th-tipo text-center th-prop th-prop-largo"> ID </th>
+        <th class="th-nombre text-center th-prop th-prop-largo ">NOMBRE</th>
+        <th class="th-valor text-center th-prop th-acciones "> CUIL_CUIT </th>
+        <th class="th-valor text-center th-prop th-acciones "> CIUDAD </th>
+        <th class="th-valor text-center th-prop th-acciones "> TELEFONO </th>
+        <th class="th-valor text-center th-prop th-acciones th-borde-right "> </th>
+
+        <?php foreach($proveedores as $proveedor) { ?> 
+            <tr>
+                <td class="td-prop text-center"> <?=$proveedor->id?> </td>
+                <td class="td-prop text-center"> <?=$proveedor->nombre?> </td>
+                <td class="td-prop text-center"> <?=$proveedor->cuil_cuit?> </td>
+                <td class="td-prop text-center"> <?=$proveedor->ciudad?> </td>
+                <td class="td-prop text-center"> <?=$proveedor->telefono?> </td>
+                <div class="acciones">
+                    <td class="p-0 border-btn "> <a href="proveedor/<?=$proveedor->id?>" class="p-1 m-1 bg-dark ancho-ver "> VER </td>
+                </div>
+            </tr>
+           
+        <?php } ?>
+    </table>
+
+
+    
+    
+    <?php if ($this->user):?>
+        
+        <?=require 'formularioProveedor.phtml'?>
+    <?php endif;?>
+    <?=require 'footer.phtml'?>
+    
+</div>

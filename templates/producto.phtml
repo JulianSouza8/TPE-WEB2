@@ -1,0 +1,35 @@
+<?=require 'header.phtml'?>
+
+<div class="container">
+
+<h2 class="display-4 text-capitalize grey-color container mt-4 mb-4"> Altas </h2> 
+
+
+    <table class="font-size-tabla  ml-2 mt-4 tabla">
+        <th class="th-tipo text-center th-prop th-prop-largo"> ID </th>
+        <th class="th-nombre text-center th-prop th-prop-largo ">NOMBRE</th>
+        <th class="th-valor text-center th-prop th-acciones "> CATEGORIA </th>
+        <th class="th-valor text-center th-prop th-acciones "> UNIDAD DE MEDIDA </th>
+        <th class="th-valor text-center th-prop th-acciones "> PROVEEDOR </th>
+        <th class="th-valor text-center th-prop th-acciones th-borde-right "> </th>
+
+        <?php foreach($producto as $prd) { ?> 
+            <tr>
+                <td class="td-prop text-center"> <?=$prd->id?> </td>
+                <td class="td-prop text-center"> <?=$prd->nombre_producto?> </td>
+                
+                
+                <?php if ($this->user):?>
+                <div class="acciones">
+                    <td class="p-0 border-btn "> <a href="./modificar/<?=$prd->id?>" class="p-1 m-1 bg-dark ancho-modif"> MODIFICAR </td>
+                    <td class="p-0 th-borde-right border-btn"> <a href="./delete/<?=$prd->id?>" class=" p-1 m-1 bg-dark ancho-ver"> ELIMINAR </td>  
+                 </div>
+                 <?php endif;?>
+
+        </tr>
+        <?php } ?>
+    </table>
+
+</div>
+</div>
+<?=require 'footer.phtml'?>

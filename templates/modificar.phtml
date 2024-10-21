@@ -1,0 +1,49 @@
+<?=require 'header.phtml'?>
+    
+<table class="font-size-tabla  ml-2 mt-4 tabla">
+        <th class="th-tipo text-center th-prop th-prop-largo"> ID </th>
+        <th class="th-nombre text-center th-prop th-prop-largo ">NOMBRE</th>
+        <th class="th-valor text-center th-prop th-acciones "> CATEGORIA </th>
+        <th class="th-valor text-center th-prop th-acciones "> UNIDAD DE MEDIDA </th>
+        <th class="th-valor text-center th-prop th-acciones "> PROVEEDOR </th>
+        <th class="th-valor text-center th-prop th-acciones th-borde-right "> </th>
+
+        <?php foreach($producto as $prd) { ?> 
+            <form action="./update/<?=$prd->id?>" method="POST">
+                
+                <td class="td-prop text-center"> <?=$prd->id?> </td>
+                <td> <input require name="nombre" value="<?=$prd->nombre_producto?>"> </td>
+                <td> <select name="categoria" id="">
+                    <?php foreach($categorias as $categoria) { ?>
+                    <option value="<?=$categoria->id?>"><?=$categoria->nombre?></option>
+                    <?php } ?>
+                </select>
+                </td>
+                <td> <select name="unidad_medida" id="">
+                    <?php foreach($medidas as $medida) { ?>
+                    <option value="<?=$medida->id?>"><?=$medida->unidad_medida?></option>
+                    <?php } ?>
+                </select>
+                 </td>
+                
+                <td> <select name="proveedor" id="">
+                    <?php foreach($proveedores as $proveedor) { ?>
+                    <option value="<?=$proveedor->id?>"><?=$proveedor->nombre?></option>
+                    <?php } ?>
+                </select> 
+                </td>
+                <div class="acciones">
+                <button type="submit"class=""> GUARDAR></button>
+                </div>
+
+            </form>
+        <?php } ?>
+    </table>
+
+
+    
+                
+                
+
+
+<?=require 'footer.phtml'?>

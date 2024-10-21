@@ -1,0 +1,27 @@
+<p class="gris-color h2 ml-1"> AGREGAR PRODUCTO </p>
+        <form action="./agregarProducto" class="" method="post">
+            <div class="form-group ">
+                <label for="title" class="" >Nombre</label>
+                <input type="text" class="w-50 altura-input ml-5" name="new_nombre" value="">
+            </div>
+            <div class="form-group ">
+                <label for="title " class="">Descripcion</label>
+                <select name="new_id_proveedor" id="">
+                    <?php foreach($proveedores as $proveedor) { ?>
+                    <option value="<?=$proveedor->id?>"><?=$proveedor->nombre?></option>
+                    <?php } ?>
+                </select>
+                <select name="new_id_medida" id="">
+                    <?php foreach($medidas as $medida) { ?>
+                    <option value="<?=$medida->id?>"><?=$medida->unidad_medida?></option>
+                    <?php } ?>
+                </select>
+                <select name="new_id_categoria" id="">
+                    <?php foreach($categorias as $categoria) { ?>
+                    <option value="<?=$categoria->id?>"><?=$categoria->nombre?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary bg-dark">Ingresar</button>
+            </div>
+        </form>

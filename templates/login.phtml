@@ -1,0 +1,16 @@
+<?=require 'header.phtml'?>
+
+<form action="./logear" class="" method="post">
+            <div class="form-group ">
+                <label for="title" class="" >Usuario</label>
+                <input type="text" class="w-50 altura-input ml-5" name="usuario" value="">
+            </div>
+            <div class="form-group ">
+                <label for="title" class="" >Contraseña</label>
+                <input type="text" class="w-50 altura-input ml-5" name="contra" value="">
+            </div>
+            <button type="submit" class="btn btn-primary bg-dark">LOGEAR</button>
+
+            <p><?=$texto?></p>
+</form>
+<?=require 'footer.phtml'?>
